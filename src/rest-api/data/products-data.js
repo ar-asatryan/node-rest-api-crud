@@ -1,6 +1,6 @@
 module.exports = productsData = {
   product1: {
-    id: "01",
+    id: "01----",
     price: 5500,
     avail: true,
     parameters: {
@@ -9,7 +9,7 @@ module.exports = productsData = {
     },
   },
   product2: {
-    id: "02",
+    id: "02---",
     price: 4500,
     avail: false,
     parameters: {

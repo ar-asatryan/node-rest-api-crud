@@ -9,3 +9,4 @@ if( Math.random() > 0.5 ) {
     process.exit();
 }
 
+// tests section:

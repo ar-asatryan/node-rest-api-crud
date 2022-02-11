@@ -13,14 +13,14 @@ const {
 
 // router.use(express.json())
 
-// router
-// .get('/', getProducts)
-// .post('/', setProduct)
-// .get('/:productID', getProduct)
-// .put('/:productID', updateProduct)
-// .delete('/:productID', deleteProduct)
+router
+.get('/', getProducts)
+.post('/', setProduct)
+.get('/:productID', getProduct)
+.put('/:productID', updateProduct)
+.delete('/:productID', deleteProduct)
 
-router.route('/').get(getProducts).post(setProduct)
-router.route('/:productID').get(getProduct).put(updateProduct).delete(deleteProduct);
+// router.route('/').get(getProducts).post(setProduct)
+// router.route('/:productID').get(getProduct).put(updateProduct).delete(deleteProduct);
 
 module.exports = router;

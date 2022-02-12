@@ -1,5 +1,4 @@
 const express = require('express');
-const res = require('express/lib/response');
 const productsData = require('../data/products-data')
 const router = express.Router();
 

@@ -18,11 +18,12 @@ const setProduct = asyncHandler(async (req, res) => {
     // }
 
     const product = await Product.create({
-      text: req.body.text
+      text: req.body.text,
+      price: req.body.price
     })
 
 
-    res.status(201).send(product)
+    res.status(201).json(product)
 })
 
 const getProduct = asyncHandler(async (req, res) => {

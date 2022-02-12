@@ -4,9 +4,13 @@ const productSchema = mongoose.Schema({
     text: {
         type: String,
         required: [true, "Please add some text..."]
+    },
+    price: {
+        type: Number,
+        required: [true, "Please add some text..."]
     }
 }, {
     timestamps: true
 } )
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model( 'Product', productSchema);

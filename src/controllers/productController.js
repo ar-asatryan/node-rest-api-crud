@@ -10,12 +10,7 @@ const getProducts = asyncHandler(async (req, res) => {
 })
 
 // Set /api/products
-
 const setProduct = asyncHandler(async (req, res) => {
-    // const user = {
-    //   name: req.body.name,
-    //   age: req.body.age
-    // }
 
     const product = await Product.create({
       text: req.body.text,
@@ -45,24 +40,21 @@ const getProduct = asyncHandler(async (req, res) => {
 } )
 
 const updateProduct = asyncHandler(async (req, res) => {
-    // console.log(req.body);
-  
-    if(!req.body.name) {
-      const err = new Error("First Error...")
-      err.status = 401;
-      // res.render('error', { error: err })
-      throw err;
-      }
-  
-    res.status(201).json({
-      message: `Product Updated: ${req.params.productID}`
+    const id = req.params.id
+    
+    const updatedProduct = await Product.findOneAndUpdate({id}, {__v: 29, text: "Barlus"}, {
+        new: true
     })
+
+    res.status(201).json(updatedProduct)
 })
 
 const deleteProduct = asyncHandler(async (req, res) => {
-    res.json({
-        message: `Product Deleted: ${req.params.productID}`
-    })
+    const id = req.params.id
+
+    const deletedProduct = await Product.findOneAndRemove({id})
+
+    res.json(deletedProduct)
 })
 
 module.exports = {

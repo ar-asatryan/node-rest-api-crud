@@ -9,7 +9,7 @@ const app = express();
 connectDB()
 
 const productRoutes = require('./src/routes/products');
-const orderRoutes = require('./src/routes/orders')
+const orderRoutes = require('./src/routes/orders');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

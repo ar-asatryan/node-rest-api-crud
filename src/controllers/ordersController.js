@@ -9,12 +9,9 @@ const getOrders = asyncHandler(async (req, res, next) => {
 
 const setOrder = asyncHandler(async (req, res, next) => {
     const order = req.body;
-    if(!req.body.name) errorHandler(res);
+    if(!req.body.orderName) errorHandler(res);
     await Order.create(order);
-    res.json({
-        message: "Handling POST requests for orders",
-        order2: ordersData.order2
-    });
+    res.json(order);
 })
 
 const updateOrder = asyncHandler(async (req, res, next) => {
@@ -28,9 +25,11 @@ const updateOrder = asyncHandler(async (req, res, next) => {
 })
 
 const deleteOrder = asyncHandler(async (req, res, next) => {
-    const id = req.params.id;
-    const deletedOrder = await Order.remove({id})
-    res.status(201).json(deleteOrder);
+    const _id = req.params.id;
+    console.log("id.....", _id);
+    const deletedOrder = await Order.remove({_id})
+    // const deletedOrder = await Order.remove({_id: id}) // 
+    res.status(201).json(deletedOrder);
 })
 
 module.exports = {

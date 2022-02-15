@@ -1,4 +1,4 @@
-const errorHandler = (req, res) => {
+const errorHandler = (res) => {
     const err = new Error("Request Not Found...");
     const statusCode = res.statusCode ? res.statusCode : 500
 

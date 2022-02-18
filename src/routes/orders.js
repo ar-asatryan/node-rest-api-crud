@@ -6,7 +6,7 @@ const {
     setOrder,
     updateOrder,
     deleteOrder
-} = require('../controllers/ordersController');
+} = require('../controllers/orderController');
 
 
 

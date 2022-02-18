@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/ar-asatryan/rest-api-crud#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1"
   },
   "devDependencies": {

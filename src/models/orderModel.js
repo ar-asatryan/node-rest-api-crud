@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ordersSchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
     orderName: {
         type: String,
         required: [true, "Please write order's name"],
@@ -17,4 +17,4 @@ const ordersSchema = mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model("Order", ordersSchema);
+module.exports = mongoose.model("Order", orderSchema);

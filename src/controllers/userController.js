@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/userModel')
 
+
 const registerUser = asyncHandler(async (req, res) => {
 
     const { name, email, password } = req.body
@@ -17,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const userExists = await User.findOne({email})
 
     if( userExists ) {
-        res.status(401)
+        res.status(400)
         throw new Error('This user already exists...')
     }
 
@@ -35,7 +36,8 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(200).json({
             _id: user.id,
             email: user.email,
-            password: user.password
+            password: user.password,
+            token: generateToken(user._id)
         })
     } else {
         res.status(403)
@@ -43,6 +45,47 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 })
 
+
+// Login/Authentication of User...
+const loginUser = asyncHandler(async (req, res) => {
+    
+    const { email, password } = req.body
+
+    const user = await User.findOne({ email })
+
+    if(user && (await bcrypt.compare(password, user.password)) ) {
+        res.status(200).json({
+            _id: user.id,
+            email: user.email,
+            password: user.password,
+            token: generateToken(user._id)
+        }) } else {
+            res.status(403)
+            throw new Error('Invalid Credentials...')
+        }
+})
+// private logic
+const getMe = asyncHandler(async (req, res) => {
+
+    const { _id, name, email } = await User.findById(req.user.id)
+
+    res.json({
+        _id,
+        name,
+        email
+    })
+})
+
+// Bearer
+
+const generateToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
+        expiresIn: '20d'
+    })
+}
+
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser,
+    getMe
 }

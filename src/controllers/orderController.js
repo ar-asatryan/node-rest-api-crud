@@ -9,7 +9,7 @@ const getOrders = asyncHandler(async (req, res, next) => {
 
 const setOrder = asyncHandler(async (req, res, next) => {
     const order = req.body;
-    if(!req.body.orderName) errorHandler(res);
+    if(!req.body.orderName) errorHandler(req, res);
     await Order.create(order);
     res.json(order);
 })

@@ -23,6 +23,14 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // password hash
+
+    // password hash
+    // const salt = await bcrypt.genSalt(8);
+    // (err, hash) => { hashedPassword = hash; console.log("HASH ONLY HASH", hash)}
+    // let hashedPassword;
+    // hashedPassword = await bcrypt.hash(password, 8 );
+    // console.log("HASH ONLY HASH", hash);
+
     const salt = await bcrypt.genSalt(8);
     const hashedPassword = await bcrypt.hash(password, salt);
 
